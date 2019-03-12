@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "JSON documents of this schema will be Events describing user click actions.",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "format": "uri-reference"
+    },
+    "action": {
+      "type": "string",
+      "enum": [
+        "Continue",
+        "RFPstart",
+        "Completed",
+        "OBRstart",
+        "RFPSSStart",
+        "LoginClick",
+        "LoginFirstClick",
+        "SignupClick",
+        "OfferAccept",
+        "OfferReject",
+        "Continue"
+      ],
+      "description": "This is the action that the user has taken on our site."
+    },
+    "appId": {
+      "type": "string",
+      "enum": ["12-2x12"],
+      "description": "Takes the value that identifies which application is sending the event."
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "Buyer.OBR",
+        "Buyer.RFP",
+        "Buyer.RFPSS",
+        "Seller.Dashboard",
+        "User.Registration",
+        "YellowPages.SellerSnippet"
+      ],
+      "description": "The category of the event."
+    },
+    "eventType": {
+      "const": "click"
+    },
+    "pageUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "It is the absolute URL of the page the user / visitor was on when they clicked on an HTML element."
+    },
+    "platform": {
+      "type": "string",
+      "enum": ["app", "web"],
+      "description": "Takes the value that identifies the platform the application runs on when sending the event."
+    },
+    "userId": {
+      "type": "number",
+      "description": "This is the User id uniquely identifying the user that did the action."
+    }
+  },
+  "required": [
+    "$schema",
+    "action",
+    "appId",
+    "category",
+    "eventType",
+    "pageUrl",
+    "platform"
+  ],
+  "additionalProperties": false
+}
